@@ -1,0 +1,17 @@
+development: &dev
+  adapter: postgresql
+  encoding: unicode
+  database: sunspottest_development
+  pool: 5
+  username: postgres
+  password: <%= ENV['SUNSPOTTEST_DATABASE_PASSWORD'] %>
+  host: localhost
+
+test:
+  <<: *dev
+  database: sunspottest_test
+
+production:
+  <<: *dev
+  database: sunspottest_production
+ 
