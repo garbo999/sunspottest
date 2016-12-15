@@ -2,15 +2,24 @@ desc "Input sentences from specified file into Sentence model"
 task :read_corpus => :environment do
   puts "Reading file..."
 
-  myfile = "lib/assets/eng_news_2005_10K-sentences.txt"
+  testing = true
+  testing = false
+
+  myfile = "lib/assets/eng_news_2015_10-sentences.txt"
+  myfile = "lib/assets/eng_news_2015_10K-sentences.txt"
+
   File.open(myfile, "r").each_line do |line|
-    # name: "Angela"    job: "Writer"    ...
-    #data = line.split(/\t/)
-    #name, job = data.map{|d| d.split(": ")[1] }.flatten
-    puts line
-    s = Sentence.new
-    s.body = line.strip
-    s.save
+    puts 'OLD: ' + line
+    #puts line.gsub(/^[0-9]{1,4} /, '')
+
+    line = line.strip.gsub(/^[0-9]{1,4}\s/, '')
+    puts 'NEW: ' + line
+
+    if !testing
+      s = Sentence.new
+      s.body = line
+      s.save
+    end
 
   end
 
