@@ -5,7 +5,7 @@ class SentencesController < ApplicationController
   # GET /sentences.json
   def index
     @sentences = Sentence.all
-    @s = Sentence.search {fulltext 'pizza'}
+    #@s = Sentence.search {fulltext 'pizza'}
   end
 
   # GET /sentences/1

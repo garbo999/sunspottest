@@ -1,2 +1,24 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<h1>Rails Sunspot test page</h1>
+
+<div class="input-group">
+    <%= form_tag(static_pages_home_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "search term..." %>
+      <span class="input-group-btn">
+        <button class="btn btn-custom" type="submit">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </span>
+    <% end %>
+</div>
+
+
+<h1>Search results for "<%= params[:search] %>"</h1>
+
+<h4>(<%= @s.count %> <%= @s.count == 1 ? "result" : "results" %> found)</h4>
+
+<% @s.each do |sentence| %>
+    <p><%= sentence.body %></p>
+<% end %>
+
+
+
