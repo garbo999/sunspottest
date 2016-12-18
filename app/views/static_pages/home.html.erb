@@ -14,9 +14,11 @@
 
 <h1>Search results for "<%= params[:search] %>"</h1>
 
-<h4>(<%= @s.count %> <%= @s.count == 1 ? "result" : "results" %> found)</h4>
+<h4>Database contains <%= @total_records%> records.</h4>
 
-<% @s.each do |sentence| %>
+<h4>(<%= @search.total %> <%= @search.total == 1 ? "result" : "results" %> found)</h4>
+
+<% @results.each do |sentence| %>
     <p><%= sentence.body %></p>
 <% end %>
 
