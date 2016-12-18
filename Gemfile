@@ -48,3 +48,4 @@ end
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 
+gem 'bootstrap-sass', '~> 3.3.5'
