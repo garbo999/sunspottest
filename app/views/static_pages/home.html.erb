@@ -1,6 +1,6 @@
 <h1>Rails Sunspot test page</h1>
 
-<h4>Database contains <%= @total_records%> records.</h4>
+<h4>Database contains <%= @total_records%> total records.</h4>
 
 <div class="input-group">
     <%= form_tag(static_pages_home_path, :method => "get", class: "navbar-form", id: "search-form") do %>
@@ -13,7 +13,7 @@
     <% end %>
 </div>
 
-<h1>Search results for "<%= params[:search] %>"</h1>
+<h1>Search results for "<%= params[:search] %>" (page <%= @current_page %>)</h1>
 
 <h4>(<%= @search.total %> <%= @search.total == 1 ? "result" : "results" %> found)</h4>
 
@@ -26,6 +26,8 @@
   </p>
 <% end %>
 
+<p> <%= link_to "Previous page", static_pages_home_path(search: params[:search], page: @previous_page) %> </p>
+<p> <%= link_to "Next page", static_pages_home_path(search: params[:search], page: @next_page) %> </p>
 
 
 
