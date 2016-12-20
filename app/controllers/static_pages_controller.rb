@@ -18,22 +18,20 @@ class StaticPagesController < ApplicationController
     @total_records = Sentence.count
 =end
 
-    # version 3: with pagination and highlighting 
+    # version 3: with pagination  
     # just noticed that highlighting truncates search results, e.g. search for 'cnbc'
+    @total_records = Sentence.count
     @current_page = params[:page] ? params[:page] : 1
 
     @search = Sentence.search do
-      fulltext params[:search] do
-        highlight :body
-      end
-      paginate :page => @current_page
+      fulltext params[:search]
+      paginate :page => params[:page]
     end
 
-    @previous_page = @search.results.previous_page
-    @next_page = @search.results.next_page
+    #@previous_page = @search.results.previous_page
+    #@next_page = @search.results.next_page
 
-    @results = @search.results
-    @total_records = Sentence.count
+    #@results = @search.results
 
   end
 end
