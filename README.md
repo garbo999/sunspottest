@@ -1,4 +1,8 @@
-# My personal Rails Sunspot test
+# Rails Sunspot test project
+
+This is my personal test of Sunspot to get familiar with SOLR. I have previously used `pg_search`, a Rails Gem that provides full-text search with PostgreSQL.
+
+The project currently runs on the developement server.
 
 ## Goals
 - Create Rake task to input data from Leipzig Corpora Collection
@@ -7,3 +11,6 @@
 
 ## Rake task
 `rake read_corpus` reads a specified file (`txt` format) and saves it to the Rails database.
+
+## TO DO
+- Deploy SOLR on a production server 
