@@ -1,0 +1,11 @@
+<% @search.hits.each do |hit| %>
+  <p>Sentence <%= hit.primary_key %>
+
+  <% hit.highlights(:body).each do |highlight| %>
+    <% result = highlight.format { |word| "<strong>#{word}</strong>" } %>
+    <%= result.html_safe %>
+  <% end %>
+
+  </p>
+
+<% end %>

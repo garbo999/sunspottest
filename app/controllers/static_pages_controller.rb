@@ -1,25 +1,28 @@
 class StaticPagesController < ApplicationController
   def home
-    # version 1: plain search
+
+    # VERSION 1: plain search
 =begin
     @search = Sentence.search {fulltext params[:search]}
     @results = @search.results
     @total_records = Sentence.count
 =end
 
-    # version 2: with highlighting
-=begin
+    # VERSION 2: with highlighting
+    # noticed that highlighting truncates search results, e.g. search for 'cnbc'
+    @total_records = Sentence.count
+    @current_page = 1 # no pagination yet
+    
     @search = Sentence.search do
       fulltext params[:search] do
         highlight :body
       end
     end
     @results = @search.results
-    @total_records = Sentence.count
-=end
 
-    # version 3: with pagination  
-    # just noticed that highlighting truncates search results, e.g. search for 'cnbc'
+
+    # VERSION 3: with pagination  
+=begin
     @total_records = Sentence.count
     @current_page = params[:page] ? params[:page] : 1
 
@@ -27,11 +30,7 @@ class StaticPagesController < ApplicationController
       fulltext params[:search]
       paginate :page => params[:page]
     end
-
-    #@previous_page = @search.results.previous_page
-    #@next_page = @search.results.next_page
-
-    #@results = @search.results
+=end
 
   end
 end
