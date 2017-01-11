@@ -7,7 +7,7 @@
 <% end %>
 
 <div class="input-group">
-    <%= form_tag(static_pages_home_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+    <%= form_tag(root_path, :method => "get", class: "navbar-form", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "search term..." %>
       <span class="input-group-btn">
         <button class="btn btn-custom" type="submit">
@@ -17,15 +17,7 @@
     <% end %>
 </div>
 
-<h1>Search results for "<%= params[:search] %>" (page <%= @current_page %> of <%= @search.results.total_pages %>)</h1>
-
-<h4>(<%= @search.total %> <%= @search.total == 1 ? "result" : "total results" %> found)</h4>
-
-<p> <%= link_to "Previous page", static_pages_home_path(search: params[:search], page: @search.results.previous_page) %> 
-    <%= link_to "Next page", static_pages_home_path(search: params[:search], page: @search.results.next_page) %> </p>
+<%= render partial: 'static_pages/search_results_header_1' %>
 
 <%= render partial: 'static_pages/results_2' %>
-
-
-
 
